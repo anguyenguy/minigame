@@ -1,0 +1,70 @@
+#include<iostream>
+#include<stdio.h>
+#include<conio.h>
+#include<string.>
+
+using namespace std;
+
+
+struct student
+{
+	char code[30],name[30],sex[10];
+	int birthday;
+	float score;
+}; 
+
+void haivitribangnhau(student c, student a){
+	strcpy(c.code, a.code);
+	strcpy(c.name, a.name);
+	strcpy(c.sex ,a.sex);
+	c.birthday = a.birthday;
+	c.score =a.score;
+}
+
+void hoandoivitri( student a,  student b){
+	student c;	
+	haivitribangnhau(c,a);
+	haivitribangnhau(a,b);
+	haivitribangnhau(b,c);	
+	cout<<"hoandoivitri"
+}
+
+int main(){
+	student a[100];
+	int n,namsinh;
+	float diem;
+	cout<<"Nhap so sinh vien la : ";cin>>n;
+	for (int i=0; i<n ; i++)
+	{
+		cout<<endl<<"Nhap thong tin sinh vien "<<i+1<<" la:"<<endl;
+		cout<<"Ma sinh vien :";fflush(stdin);gets(a[i].code);
+		cout<<"Ho va ten sinh vien :";fflush(stdin);gets(a[i].name);
+		cout<<"Gioi tinh :";fflush(stdin);gets(a[i].sex);
+		cout<<"Nam sinh :";cin>>a[i].birthday;
+		cout<<"Diem trung binh :";cin>>a[i].score;
+	}
+	
+	
+	for(int i=0; i<n/2; i++ ){
+		for(int j=n ; j>n/2 ; j--){
+			if(a[i].birthday>a[j].birthday	){
+				hoandoivitri(a[i],a[j]);
+				cout<<"aaaaaaa";
+			}
+		}	
+	}
+	
+	
+	for  (int i=0; i<n ; i++)
+	{
+		cout<<"-------------"<<endl;
+		cout<<"Sinh vien "<<i+1<<endl;
+		cout<<"Ma sinh vien :"<<a[i].code<<endl;
+		cout<<"Ho va ten :"<<a[i].name<<endl;
+		cout<<"Gioi tinh :"<<a[i].sex<<endl;
+		cout<<"Nam sinh :"<<a[i].birthday<<endl;
+		cout<<"Diem trung binh :"<<a[i].score<<endl;
+	}
+	
+	
+}
